@@ -1,0 +1,112 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="../bower_components/paper-slider/paper-slider.html">
+<link rel="import" href="../bower_components/core-icons/core-icons.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../bower_components/paper-dropdown/paper-dropdown.html">
+<link rel="import" href="../bower_components/core-menu/core-menu.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+
+
+<polymer-element name="thermostat-control">
+
+	<template>
+		<core-xhr id="xhr"></core-xhr>
+		<div>
+			<div>
+				<h1 class="temperature">{{temperature}}&deg;</h1>
+				<h2 class="humidity">{{humidity}}%</h2>
+			</div>
+			<div>
+				<div class="heat-slider">
+					<paper-slider pin editable value={{heat}} max="90" min="50"></paper-slider>
+				</div>
+			</div>
+			<div>
+				<div class="cool-slider">
+					<paper-slider pin editable value={{cool}} max="90" min="50"></paper-slider>
+				</div>
+			</div>
+			<div>
+				<paper-dropdown-menu label="Mode">
+					<paper-dropdown class="dropdown">
+						<core-menu selected={{mode}} class="menu">
+							<paper-item>Auto</paper-item>
+							<paper-item>Heating</paper-item>
+							<paper-item>Cooling</paper-item>
+							<paper-item>Off</paper-item>
+						</core-menu>
+					</paper-dropdown>
+				</paper-dropdown-menu>
+			</div>
+		</div>
+
+		<style>
+		:host {
+			display: block;
+			position: relative;
+			background-color: white;
+			font-size: 1.2rem;
+			font-weight: 300;
+		}
+
+		.temperature {
+			margin: 0;
+			font-weight: 200;
+		}
+
+		.humidity {
+			margin: 0;
+			font-weight: 300;
+		}
+
+		paper-slider {
+			width: 100%;
+		}
+
+		.heat-slider paper-slider::shadow #sliderKnobInner,
+		.heat-slider paper-slider::shadow #sliderKnobInner::before,
+		.heat-slider paper-slider::shadow #sliderBar::shadow #activeProgress {
+			background-color: #ff0037;
+		}
+
+		.cool-slider paper-slider::shadow #sliderKnobInner,
+		.cool-slider paper-slider::shadow #sliderKnobInner::before,
+		.cool-slider paper-slider::shadow #sliderBar::shadow #activeProgress {
+			background-color: #00aaff;
+		}
+
+	</style>
+</template>
+
+<script>
+	Polymer('thermostat-control', {
+		publish: {
+			type: 'switch',
+			updateUrl: '',
+			temperature: { value: 0, reflect: true },
+			humidity: { value: 0, reflect: true },
+			heat: { value: undefined, reflect: true },
+			cool: { value: undefined, reflect: true }
+		},
+		heatChanged: function(oldValue, newValue) {
+			if (oldValue != undefined) {
+				this.changeSetpoint('heat', newValue);
+			}
+		},
+		coolChanged: function(oldValue, newValue) {
+			if (oldValue != undefined) {
+				this.changeSetpoint('cool', newValue);
+			}
+		},
+		changeSetpoint: function(type, value) {
+			var url = this.updateUrl;
+			var method = 'PUT';
+			var headers = {'Content-Type': 'application/json'};
+			var body = '{"' + type + '": "' + value + '"}';
+			this.$.xhr.request({url: url, method: method, headers: headers, body: body});
+		}
+	});
+</script>
+
+</polymer-element>

@@ -1,0 +1,35 @@
+{
+  "name": "switchflipper",
+  "version": "0.0.0",
+  "authors": [
+    "Nicko Guyer <nguyer@gmail.com>"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "core-ajax": "Polymer/core-ajax#~0.5.3",
+    "core-toolbar": "Polymer/core-toolbar#~0.5.3",
+    "core-header-panel": "Polymer/core-header-panel#~0.5.3",
+    "font-roboto": "Polymer/font-roboto#~0.5.3",
+    "paper-tabs": "Polymer/paper-tabs#~0.5.3",
+    "webcomponentsjs": "0.5.2",
+    "paper-button": "Polymer/paper-button#~0.5.4",
+    "paper-toggle-button": "Polymer/paper-toggle-button#~0.5.4",
+    "bouncefix.js": "~0.3.0",
+    "core-iconset-svg": "polymer/core-iconset-svg#~0.5.4",
+    "paper-icon-button": "polymer/paper-icon-button#~0.5.4",
+    "paper-fab": "polymer/paper-fab#~0.5.4",
+    "paper-slider": "Polymer/paper-slider#~0.5.4",
+    "paper-dropdown-menu": "Polymer/paper-dropdown-menu#~0.5.4"
+  }
+}

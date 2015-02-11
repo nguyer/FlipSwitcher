@@ -1,0 +1,8 @@
+.DS_Store
+node_modules
+public/bower_components
+config/devices.json
+config/groups.json
+config/modes.json
+config/users.json
+config/triggers.json

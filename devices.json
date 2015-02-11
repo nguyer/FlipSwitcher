@@ -1,0 +1,152 @@
+[
+    {
+        "id": "nickoslamp",
+        "name": "Nicko's Lamp",
+        "description": "Philips Hue Light",
+        "deviceType": "HueLight",
+        "state": {
+            "on": false,
+            "color": [
+                255,
+                255,
+                255
+            ],
+            "brightness": 255
+        },
+        "statusUrl": "http://192.168.1.129/api/295c02e0a8e38cf3feeef3072058bf/lights/2",
+        "updateUrl": "http://192.168.1.129/api/295c02e0a8e38cf3feeef3072058bf/lights/2/state"
+    },
+    {
+        "id": "deniseslamp",
+        "name": "Denise's Lamp",
+        "description": "Philips Hue Light",
+        "deviceType": "HueLight",
+        "state": {
+            "on": false,
+            "color": [
+                255,
+                255,
+                255
+            ],
+            "brightness": 255
+        },
+        "statusUrl": "http://192.168.1.129/api/295c02e0a8e38cf3feeef3072058bf/lights/3",
+        "updateUrl": "http://192.168.1.129/api/295c02e0a8e38cf3feeef3072058bf/lights/3/state"
+    },
+    {
+        "id": "nurserylamp",
+        "name": "Nursery Lamp",
+        "description": "A Philips Hue Light",
+        "deviceType": "HueLight",
+        "state": {
+            "on": false,
+            "color": [
+                255,
+                255,
+                255
+            ],
+            "brightness": 255
+        },
+        "statusUrl": "http://192.168.1.129/api/295c02e0a8e38cf3feeef3072058bf/lights/1",
+        "updateUrl": "http://192.168.1.129/api/295c02e0a8e38cf3feeef3072058bf/lights/1/state"
+    },
+    {
+        "id": "drivewaylight",
+        "name": "Driveway Light",
+        "deviceType": "ZWaveLightSwitch",
+        "state": {
+            "on": false
+        },
+        "statusUrl": "http://localhost:3001/devices/2",
+        "updateUrl": "http://localhost:3001/devices/2/state"
+    },
+    {
+        "id": "porchlight",
+        "name": "Porch Light",
+        "deviceType": "ZWaveLightSwitch",
+        "state": {
+            "on": false
+        },
+        "statusUrl": "http://localhost:3001/devices/3",
+        "updateUrl": "http://localhost:3001/devices/3/state"
+    },
+    {
+        "id": "switchy",
+        "name": "Switchy",
+        "deviceType": "ZWaveSwitch",
+        "state": {
+            "on": false
+        },
+        "statusUrl": "http://localhost:3001/devices/7",
+        "updateUrl": "http://localhost:3001/devices/7/state"
+    },
+    {
+        "id": "downstairs",
+        "name": "Downstairs",
+        "deviceType": "ZWaveThermostat",
+        "state": {
+            "temperature": "70.0",
+            "state": "Idle",
+            "heat": "60",
+            "cool": 75,
+            "humidity": 34,
+            "mode": 1
+        },
+        "statusUrl": "http://localhost:3001/devices/4",
+        "updateUrl": "http://localhost:3001/devices/4/state"
+    },
+    {
+        "id": "mainfloor",
+        "name": "Main Floor",
+        "deviceType": "ZWaveThermostat",
+        "state": {
+            "heat": 70,
+            "temperature": "71.0",
+            "mode": 1,
+            "cool": 78,
+            "humidity": 29,
+            "state": "Heating"
+        },
+        "statusUrl": "http://localhost:3001/devices/5",
+        "updateUrl": "http://localhost:3001/devices/5/state"
+    },
+    {
+        "id": "upstairs",
+        "name": "Upstairs",
+        "deviceType": "ZWaveThermostat",
+        "state": {
+            "temperature": "70.5",
+            "heat": 70,
+            "cool": 75,
+            "humidity": 25,
+            "mode": 1,
+            "state": "Idle"
+        },
+        "statusUrl": "http://localhost:3001/devices/6",
+        "updateUrl": "http://localhost:3001/devices/6/state"
+    },
+    {
+        "id": "leftlivingroomlamp",
+        "name": "Left Living Room Lamp",
+        "description": "A Philips Hue Light",
+        "deviceType": "HueLight",
+        "state": {
+            "on": false,
+            "brightness": 10
+        },
+        "statusUrl": "http://192.168.1.129/api/295c02e0a8e38cf3feeef3072058bf/lights/4",
+        "updateUrl": "http://192.168.1.129/api/295c02e0a8e38cf3feeef3072058bf/lights/4/state"
+    },
+    {
+        "id": "rightlivingroomlamp",
+        "name": "Right Living Room Lamp",
+        "description": "A Philips Hue Light",
+        "deviceType": "HueLight",
+        "state": {
+            "on": false,
+            "brightness": 10
+        },
+        "statusUrl": "http://192.168.1.129/api/295c02e0a8e38cf3feeef3072058bf/lights/5",
+        "updateUrl": "http://192.168.1.129/api/295c02e0a8e38cf3feeef3072058bf/lights/5/state"
+    }
+]

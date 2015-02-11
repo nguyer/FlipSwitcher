@@ -1,0 +1,59 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="flip-switch.html">
+
+<polymer-element name="flip-switch-list">
+
+	<template>
+		<core-ajax url="/api/v1.0/devices" auto response="{{devices}}" handleAs="json"></core-ajax>
+		<core-xhr id="xhr"></core-xhr>
+		<template repeat="{{device in devices}}" layout vertical center>
+			<flip-switch updateUrl="/api/v1.0/devices/{{device.id}}/state" state={{device.state}} type="{{device.deviceType}}">
+				<h2>{{device.name}}</h2>
+			</flip-switch>
+		</template>
+
+		<style>
+			:host {
+				display: block;
+				width: 100%;
+			}
+			flip-switch {
+				margin-bottom: 30px;
+			}
+		</style>
+	</template>
+
+	<script>
+		Polymer('flip-switch-list', {
+			ready : function() {
+				var self = this;
+				var url = '/api/v1.0/updates'
+				var method = "GET";
+				var headers = {"Content-Type" : "application/json"};
+
+				function checkForUpdates() {
+					self.$.xhr.request({url: url, method: method, headers: headers, callback : function(res) {
+						res = JSON.parse(res);
+						if (res.state) {
+							var device = getDeviceById(res.id);
+							device.state = res.state;
+						}
+						checkForUpdates();
+					}});
+				}
+				checkForUpdates();
+
+				function getDeviceById(deviceId) {
+					for (var i = 0; i < self.devices.length; i++) {
+						if (self.devices[i].id === deviceId) {
+							return self.devices[i];
+						}
+					}
+					return null;
+				}
+			}
+		});
+	</script>
+
+</polymer-element>

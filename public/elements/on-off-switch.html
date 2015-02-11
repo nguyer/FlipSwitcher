@@ -1,0 +1,97 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../bower_components/core-icons/core-icons.html">
+
+
+<polymer-element name="on-off-switch">
+
+	<template>
+		<core-xhr id="xhr"></core-xhr>
+		<paper-fab id="button" mini icon="radio-button-on" on={{on}} on-tap="{{onTap}}"></paper-fab>
+
+		<style>
+		:host {
+			display: block;
+			position: relative;
+			background-color: white;
+			font-size: 1.2rem;
+			font-weight: 300;
+		}
+		polyfill-next-selector { content: '.device-header h2'; }
+		.device-header ::content h2 {
+			margin: 0;
+			margin-top: 10px;
+			font-size: 1em;
+			font-weight: 300;
+		}
+		polyfill-next-selector { content: '.device-header img'; }
+		.device-header ::content img {
+			width: 70px;
+			border-radius: 50%;
+			margin: 10px;
+		}
+		.device-switch {
+
+		}
+		paper-fab {
+			background: #00e494;
+		}
+
+		paper-fab[on~=false] {
+			background: #999;
+			color: #aaa;
+		}
+
+		paper-fab::shadow paper-shadow {
+			display: none;
+		}
+
+	</style>
+</template>
+
+<script>
+	Polymer('on-off-switch', {
+		publish : {
+			type : 'Switch',
+			updateUrl : '',
+			on : { value : false, reflect : true }
+		},
+		onTap : function(something) {
+			if (this.on) {
+				this.toggleSwitch(false);
+				this.$.button.setAttribute('icon', 'radio-button-off');
+			}
+			else {
+				this.toggleSwitch(true);
+				this.$.button.setAttribute('icon', 'radio-button-on');
+			}
+		},
+		onChanged : function(oldValue, newValue) {
+			if (newValue) {
+				this.$.button.setAttribute('icon', 'radio-button-on');
+			}
+			else {
+				this.$.button.setAttribute('icon', 'radio-button-off');
+			}
+		},
+		toggleSwitch: function(on) {
+			this.on = on;
+			var url = this.updateUrl;
+			var method = "PUT";
+			var headers = {"Content-Type" : "application/json"}
+			var body = JSON.stringify({on : on});
+			this.$.xhr.request({url: url, method: method, headers: headers, body: body});
+		},
+		ready : function() {
+			var self = this;
+			var url = this.getAttribute('url');
+
+			if (!this.on) {
+				this.$.button.setAttribute('icon', 'radio-button-off');
+			}
+		}
+	});
+</script>
+
+</polymer-element>

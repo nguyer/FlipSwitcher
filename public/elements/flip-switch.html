@@ -1,0 +1,98 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../bower_components/core-icons/core-icons.html">
+<link rel="import" href="on-off-switch.html">
+<link rel="import" href="thermostat-control.html">
+
+
+<polymer-element name="flip-switch">
+
+	<template>
+		<core-xhr id="xhr"></core-xhr>
+
+		<template if="{{type == 'Light' || type == 'HueLight' || type == 'Switch' || type == 'ZWaveSwitch' || type == 'ZWaveLightSwitch'}}">
+			<div class="device-header" layout horizontal>
+				<div>
+					<content select="img"></content>
+					<content select="h2"></content>
+				</div>
+				<div flex></div>
+				<div>
+					<on-off-switch on={{state.on}} type="{{type}}" updateUrl="{{updateUrl}}"></on-off-switch>
+				</div>
+			</div>
+		</template>
+
+
+		<template if="{{type == 'Thermostat' || type == 'ZWaveThermostat'}}">
+			<div class="device-header" layout vertical>
+				<div>
+					<content select="img"></content>
+					<content select="h2"></content>
+				</div>
+				<div>
+					<thermostat-control
+						temperature="{{state.temperature}}"
+						humidity="{{state.humidity}}"
+						mode="{{state.mode}}"
+						heat="{{state.heat}}"
+						cool="{{state.cool}}"
+						updateUrl="{{updateUrl}}">
+					</thermostat-control>
+				</div>
+			</div>
+		</template>
+
+		<style>
+			:host {
+				display: block;
+				position: relative;
+				background-color: white;
+				padding: 25px;
+				font-size: 1.2rem;
+				font-weight: 300;
+			}
+			polyfill-next-selector { content: '.device-header h2'; }
+			.device-header ::content h2 {
+				margin: 0;
+				margin-top: 10px;
+				font-size: 1em;
+				font-weight: 300;
+			}
+			polyfill-next-selector { content: '.device-header img'; }
+			.device-header ::content img {
+				width: 70px;
+				border-radius: 50%;
+				margin: 10px;
+			}
+			.device-switch {
+
+			}
+			paper-fab {
+				background: #00e494;
+			}
+
+			paper-fab[on~="false"] {
+				background: #999;
+				color: #aaa;
+			}
+
+			paper-fab::shadow paper-shadow {
+				display: none;
+			}
+
+		</style>
+	</template>
+
+	<script>
+	Polymer('flip-switch', {
+		publish : {
+			type : 'switch',
+			updateUrl : '',
+			state : { value : {}, reflect : true }
+		}
+	});
+	</script>
+
+</polymer-element>
