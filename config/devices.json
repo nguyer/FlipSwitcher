@@ -1,0 +1,46 @@
+[
+    {
+        "id": "huelight",
+        "name": "My Hue Light",
+        "description": "A Sample Philips Hue Light",
+        "deviceType": "HueLight",
+        "state": {
+            "on": false,
+            "color": [
+                255,
+                255,
+                255
+            ],
+            "brightness": 255
+        },
+        "statusUrl": "http://192.168.1.129/api/295c02e0a8e38cf3feaef3072058bf/lights/1",
+        "updateUrl": "http://192.168.1.129/api/295c02e0a8e38cf3feaef3072058bf/lights/1/state"
+    },
+    {
+        "id": "zwavelight",
+        "name": "My Z-Wave Light",
+        "description": "A Sample Z-Wave Light Switch",
+        "deviceType": "ZWaveLightSwitch",
+        "state": {
+            "on": false
+        },
+        "statusUrl": "http://localhost:3001/devices/2",
+        "updateUrl": "http://localhost:3001/devices/2/state"
+    },
+    {
+        "id": "thermostat",
+        "name": "My Z-Wave Thermostat",
+        "description": "A Sample Z-Wave Thermostat",
+        "deviceType": "ZWaveThermostat",
+        "state": {
+            "temperature": "60.0",
+            "state": "Idle",
+            "heat": "60",
+            "cool": 75,
+            "humidity": 34,
+            "mode": 1
+        },
+        "statusUrl": "http://localhost:3001/devices/4",
+        "updateUrl": "http://localhost:3001/devices/4/state"
+    }
+]

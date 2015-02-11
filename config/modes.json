@@ -1,0 +1,59 @@
+[
+	{
+		"id": "night",
+		"name": "Night",
+		"devices": [
+			{
+				"id": "leftlivingroomlamp",
+				"state": {
+					"on": false
+				}
+			},
+			{
+				"id": "rightlivingroomlamp",
+				"state": {
+					"on": false
+				}
+			},
+			{
+				"id": "drivewaylight",
+				"state": {
+					"on": false
+				}
+			},
+			{
+				"id": "porchlight",
+				"state": {
+					"on": false
+				}
+			},
+			{
+				"id": "nurserylight",
+				"state": {
+					"on": false
+				}
+			},
+			{
+				"id": "upstairs",
+				"state": {
+					"heat": 70,
+					"cool": 72
+				}
+			},
+			{
+				"id": "mainfloor",
+				"state": {
+					"heat": 60,
+					"cool": 80
+				}
+			},
+			{
+				"id": "downstairs",
+				"state": {
+					"heat": 60,
+					"cool": 80
+				}
+			}
+		]
+	}
+]
